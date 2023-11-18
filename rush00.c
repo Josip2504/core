@@ -2,12 +2,24 @@
 
 int main()
 {
-	char row;
-	char col;
+	int row;
+	int col;
 
 	printf("Enter row number: \n");
-	scanf("%s", &row);
+	while (scanf("%d", &row) != 1)
+	{
+		printf("Please enter an integer! \n");
+		while (getchar() != '\n');
+		printf("Enter row number: \n");
+	}
 	printf("Enter col number: \n");
-	scanf("%s", &col);
+	while (scanf("%d", &col) != 1)
+	{
+		printf("Please enter an integer!\n");
+		while (getchar() != '\n');
+		printf("Enter col number: \n");
+	}
+	printf("%d\n", row);
+	printf("%d\n", col);
 	return (0);
 }
