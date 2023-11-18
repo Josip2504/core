@@ -1,5 +1,21 @@
 #include <stdio.h>
 
+void ft_check(x, y)
+{
+	int i = 0;
+	int j = 0;
+
+	while (j < y)
+	{
+		while (i < x)
+		{
+			printf("o");
+			i++;
+		}
+		j++;
+	}
+}
+
 int main()
 {
 	int row;
@@ -19,7 +35,6 @@ int main()
 		while (getchar() != '\n');
 		printf("Enter col number: \n");
 	}
-	printf("%d\n", row);
-	printf("%d\n", col);
+	ft_check(row, col);
 	return (0);
 }
