@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 12:51:49 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 15:55:25 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/06 11:34:11 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 21:06:39 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
-int	ft_strlcpy(char *dest, char *src, unsigned int size)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	srclen;
-	int		i;
-
-	srclen = ft_strlen(src);
-	i = 0;
-	if (srclen + 1 < size)
+	while (*s != '\0')
 	{
-		while (i < srclen + 1)
-		{
-			dest[i] = src[i];
-			i++;
-		}
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	else if (size < srclen)
-	{
-		while (i + 1 < size)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-	}
-	dest[i] = '\0';
-	return (srclen);
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

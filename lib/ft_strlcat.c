@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 09:39:20 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 10:12:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/09 10:34:06 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	srclen;
-	unsigned int	destlen;
+	size_t	srclen;
+	size_t	destlen;
 
-	i = 0;
-	j = 0;
 	srclen = ft_strlen(src);
 	destlen = ft_strlen(dest);
-	i = destlen;
-	if (size == 0 || size <= destlen)
-		return (src + srclen);
-	while (src[j] && j < size - destlen - 1)
+	if (destlen >= size)
+		return (size + srclen);
+	if (destlen == size)
+		return (size + srclen);
+	if (srclen < size - destlen)
+		ft_memcpy(dest + destlen, src, srclen + 1);
+	else
 	{
-		dest[j] = src[j];
-		i++;
-		j++;
+		ft_memcpy(dest + destlen, src, size - destlen - 1);
+		dest[size - 1] = '\0';
 	}
-	dest[i] = '\0';
 	return (destlen + srclen);
 }

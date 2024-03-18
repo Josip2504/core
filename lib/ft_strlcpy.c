@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:02 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/08 15:17:45 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 12:51:49 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:56:29 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	while (n > 0 && (s1 != NULL || s2 != NULL))
+	size_t	srclen;
+
+	srclen = ft_strlen(src);
+	if (srclen + 1 < size)
+		ft_memcpy(dest, src, srclen + 1);
+	else if (size != 0)
 	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-		n--;
+		ft_memcpy(dest, src, size - 1);
+		dest[size - 1] = 0;
 	}
-	return (0);
+	return (srclen);
 }

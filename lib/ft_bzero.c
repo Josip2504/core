@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 11:08:46 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/07 12:51:05 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 10:58:23 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 14:58:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*dest;
-	char	*source;
-	size_t	i;
+	unsigned char	*ch;
 
-	dest = (char *) dst;
-	source = (char *) src;
-	i = 0;
-	if (dest > source)
+	ch = s;
+	while (n > 0)
 	{
-		while (len > 0)
-		{
-			dest[len] = source[len];
-			len--;
-		}
+		*ch = 0;
+		ch++;
+		n--;
 	}
-	else
-	{
-		while (len > i)
-		{
-			dest[i] = source[i];
-			i++;
-		}
-	}
-	return (dst);
 }
