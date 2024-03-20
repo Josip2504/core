@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:10:54 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/20 12:41:34 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/20 12:13:01 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/20 12:23:09 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
-int	print_char(int c)
+int main()
 {
-	return (write(1, &c, 1));
+	printf("\001\002\007\v\010\f\r\n");
+	printf("\n");
+	ft_printf("\001\002\007\v\010\f\r\n");
+	return (0);
 }
