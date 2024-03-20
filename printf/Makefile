@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
-#    Updated: 2024/03/20 12:22:16 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/03/20 15:47:52 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRC = ft_printf.c print_format.c print_char.c print_str.c print_digit.c print_x.
 print_ptr.c
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
