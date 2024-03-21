@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:12:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/20 15:43:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:47:46 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 int	print_str(char *str)
 {
-	int		i;
+	int	count;
 
-	i = 0;
+	count = 0;
 	if (str == NULL)
 	{
-		ft_printf("(null)");
-		return (6);
+		return (write (1, "(null)", 6));
 	}
+	if (!str)
+		return (-1);
 	while (*str)
 	{
-		print_char((int)*str);
-		++i;
+		count += print_char((int)*str);
+		if (count < 0)
+			return (-1);
 		++str;
 	}
-	return (i);
+	return (count);
 }

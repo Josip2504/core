@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 12:12:48 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 14:18:58 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:51:43 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,18 @@ int	print_ptr(unsigned long ptr, int base)
 
 	print_len = 0;
 	if ((void *)ptr == NULL)
-	{
-		ft_printf("0x0");
-		return (3);
-	}
+		return (ft_printf("0x0"));
 	print_len += write(1, "0x", 2);
+	if (print_len < 0)
+		return (-1);
 	if (print_len == 0)
 		print_len += write (1, "0", 1);
 	else
 	{
 		put_ptr(ptr, base);
 		print_len += ptr_len(ptr, base);
+		if (print_len < 0)
+			return (-1);
 	}
 	return (print_len);
 }
