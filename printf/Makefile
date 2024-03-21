@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
-#    Updated: 2024/03/21 12:05:17 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/03/21 13:56:40 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,27 +15,25 @@ SRC = ft_printf.c print_format.c print_char.c print_str.c print_digit.c print_x.
 print_ptr.c
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
-LIBFT_PATH = ./libft
-LIBFT = $(LIBFT_PATH)/libft.a
+
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	ar rcs $(NAME) $(OBJ) $(LIBFT)
-
-$(LIBFT):
-	make -C $(LIBFT_PATH) all
+$(NAME): $(OBJ)
+	$(MAKE) -C ./libft
+	cp ./libft/libft.a $(NAME)
+	ar rcs $(NAME) $(OBJ)
 
 %.o: %.cc
 	cc $(CFLAGS) -c $< -o $@ 
 
 clean:
 	rm -f $(OBJ)
-	make -C $(LIBFT_PATH) clean
+	$(MAKE) -C ./libft
 
 fclean:
 	rm -f $(OBJ)
 	rm -f $(NAME)
-	make -C $(LIBFT_PATH) fclean
+	$(MAKE) -C ./libft
 
 re: fclean all
 .PHONY: all clean fclean re

@@ -6,12 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:25:39 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:02:21 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:00:26 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
