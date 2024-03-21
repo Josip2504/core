@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 14:00:42 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:19:09 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		print_char(int c);
 int		print_str(char *str);
 int		print_digit(long n, int base);
 int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
+int		print_ptr(unsigned long ptr, int base);
 
 #endif

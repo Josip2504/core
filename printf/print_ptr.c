@@ -6,13 +6,13 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 12:12:48 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/19 13:24:42 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:18:58 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ptr_len(uintptr_t ptr)
+int	ptr_len(uintptr_t ptr, int base)
 {
 	int	len;
 
@@ -20,29 +20,29 @@ int	ptr_len(uintptr_t ptr)
 	while (ptr)
 	{
 		len++;
-		ptr /= 16;
+		ptr /= base;
 	}
 	if (len == 0)
 		len = 1;
 	return (len);
 }
 
-void	put_ptr(uintptr_t ptr)
+void	put_ptr(uintptr_t ptr, int base)
 {
 	char	digit;
 
 	if (ptr > 0)
 	{
-		put_ptr(ptr / 16);
-		if (ptr % 16 < 10)
-			digit = ptr % 16 + '0';
+		put_ptr(ptr / base, base);
+		if (ptr % base < 10)
+			digit = ptr % base + '0';
 		else
-			digit = ptr % 16 - 10 + 'a';
+			digit = ptr % base - 10 + 'a';
 		write (1, &digit, 1);
 	}
 }
 
-int	print_ptr(unsigned long long ptr)
+int	print_ptr(unsigned long ptr, int base)
 {
 	int	print_len;
 
@@ -57,8 +57,8 @@ int	print_ptr(unsigned long long ptr)
 		print_len += write (1, "0", 1);
 	else
 	{
-		put_ptr(ptr);
-		print_len += ptr_len(ptr);
+		put_ptr(ptr, base);
+		print_len += ptr_len(ptr, base);
 	}
 	return (print_len);
 }

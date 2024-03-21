@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:25:39 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 14:00:26 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:39:52 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,17 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
+		{
 			count += print_format(*(++format), ap);
+			if (count < 0)
+				return (-1);
+		}
 		else
+		{
 			count += print_char(*format);
+			if (count < 0)
+				return (-1);
+		}
 		++format;
 	}
 	va_end(ap);
