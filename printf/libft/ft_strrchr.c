@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:06:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/06 19:02:19 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:30:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <stddef.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
 
-int		ft_printf(const char *format, ...);
-int		print_format(char spec, va_list ap);
-int		print_char(int c);
-int		print_str(char *str);
-int		print_digit(long n, int base);
-int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
-
-#endif
+	len = 0;
+	while (*s)
+	{
+		len++;
+		s++;
+	}
+	while (len >= 0)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		len--;
+		s--;
+	}
+	return (NULL);
+}

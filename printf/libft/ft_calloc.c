@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:06:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/10 14:28:49 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/12 22:18:34 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	product;
+	void	*memory;
 
-int		ft_printf(const char *format, ...);
-int		print_format(char spec, va_list ap);
-int		print_char(int c);
-int		print_str(char *str);
-int		print_digit(long n, int base);
-int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
-
-#endif
+	product = count * size;
+	memory = malloc(product);
+	if (!memory)
+		return (NULL);
+	ft_bzero(memory, product);
+	return (memory);
+}

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 12:25:39 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:02:21 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/10 17:29:41 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 17:43:52 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	va_list	ap;
-	int		count;
+	char	*result;
+	size_t	s1len;
+	size_t	s2len;
 
-	count = 0;
-	va_start(ap, format);
-	while (*format)
-	{
-		if (*format == '%')
-			count += print_format(*(++format), ap);
-		else
-			count += print_char(*format);
-		++format;
-	}
-	va_end(ap);
-	return (count);
+	if (!s1 || !s2)
+		return (NULL);
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	result = (char *)malloc((s1len + s2len + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, s1, s1len);
+	ft_memcpy(result + s1len, s2, s2len);
+	result[s1len + s2len] = '\0';
+	return (result);
 }

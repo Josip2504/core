@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:06:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/09 19:16:56 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:56:35 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
 
-int		ft_printf(const char *format, ...);
-int		print_format(char spec, va_list ap);
-int		print_char(int c);
-int		print_str(char *str);
-int		print_digit(long n, int base);
-int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
-
-#endif
+	i = 0;
+	j = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
+	{
+		while (haystack[i + j] == needle[j] && haystack[i + j]
+			&& len > i + j)
+		{
+			j++;
+		}
+		if (needle[j] == '\0')
+			return ((char *)haystack + i);
+		i++;
+		j = 0;
+	}
+	return (NULL);
+}

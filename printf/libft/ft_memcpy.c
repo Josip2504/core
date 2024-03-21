@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:06:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/08 15:34:48 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:16:15 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <string.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char	*d;
+	char	*s;
 
-int		ft_printf(const char *format, ...);
-int		print_format(char spec, va_list ap);
-int		print_char(int c);
-int		print_str(char *str);
-int		print_digit(long n, int base);
-int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
-
-#endif
+	d = (char *) dst;
+	s = (char *) src;
+	if (!dst && !src)
+		return (dst);
+	while (n--)
+		*d++ = *s++;
+	return (dst);
+}

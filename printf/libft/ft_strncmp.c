@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 12:06:16 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/06 20:10:02 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:47:33 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <string.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include "libft/libft.h"
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-int		ft_printf(const char *format, ...);
-int		print_format(char spec, va_list ap);
-int		print_char(int c);
-int		print_str(char *str);
-int		print_digit(long n, int base);
-int		print_x(long n, int base);
-int		print_ptr(unsigned long long ptr);
-
-#endif
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if ((unsigned char) s1[i] != (unsigned char) s2[i])
+			return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+		if (*s1 == '\0')
+			return (0);
+		i++;
+	}
+	return (0);
+}
