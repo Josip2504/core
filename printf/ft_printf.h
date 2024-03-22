@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/22 11:50:34 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:43:30 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
-# include "./libft/libft.h"
 
 int		ft_printf(const char *format, ...);
 int		print_format(char spec, va_list ap);

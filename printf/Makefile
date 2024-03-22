@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
-#    Updated: 2024/03/21 13:56:40 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/03/22 12:43:00 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,6 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(MAKE) -C ./libft
-	cp ./libft/libft.a $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.cc
@@ -28,12 +26,10 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) -C ./libft
 
 fclean:
 	rm -f $(OBJ)
 	rm -f $(NAME)
-	$(MAKE) -C ./libft
 
 re: fclean all
 .PHONY: all clean fclean re
