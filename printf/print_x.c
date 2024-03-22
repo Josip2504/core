@@ -6,28 +6,48 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:44:18 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/19 15:29:07 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:23:39 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_help_x(long n)
+{
+	char	*symbol;
+	int		test;
+
+	symbol = "0123456789ABCDEF";
+	test = 0;
+	test += (write(1, &symbol[n], 1));
+	return (test);
+}
+
 int	print_x(long n, int base)
 {
 	int		i;
-	char	*symbol;
+	int		test;
 
-	symbol = "0123456789ABCDEF";
+	test = 0;
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		test += (write(1, "-", 1));
+		if (test < 0)
+			return (-1);
 		return (print_x(-n, base) + 1);
 	}
-	if (n < base)
-		return (print_char(symbol[n]));
+	else if (n < base)
+	{
+		test = ft_help_x(n);
+		if (test < 0)
+			return (-1);
+		return (test);
+	}
 	else
 	{
 		i = print_x(n / base, base);
+		if (i < 0)
+			return (-1);
 		return (i + print_x(n % base, base));
 	}
 }

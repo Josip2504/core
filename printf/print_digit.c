@@ -6,21 +6,29 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:13:15 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 16:14:59 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:18:49 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_digit(long n, int base)
+int	ft_help(long n)
 {
-	int		i;
 	char	*symbol;
 	int		test;
 
-	test = 0;
-	i = 0;
 	symbol = "0123456789abcdef";
+	test = 0;
+	test = (write(1, &symbol[n], 1));
+	return (test);
+}
+
+int	print_digit(long n, int base)
+{
+	int		i;
+	int		test;
+
+	test = 0;
 	if (n < 0)
 	{
 		test += (write(1, "-", 1));
@@ -30,11 +38,16 @@ int	print_digit(long n, int base)
 	}
 	else if (n < base)
 	{
-		return (print_char(symbol[n]));
+		test = ft_help(n);
+		if (test < 0)
+			return (-1);
+		return (test);
 	}
 	else
 	{
 		i = print_digit(n / base, base);
+		if (i < 0)
+			return (-1);
 		return (i + print_digit(n % base, base));
 	}
 }

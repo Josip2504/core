@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:08:06 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/21 14:19:04 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/22 11:50:08 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	print_format(char spec, va_list ap)
 	else if (spec == 'p')
 		i += print_ptr(va_arg(ap, unsigned long), 16);
 	else if (spec == 'd')
-		i += print_digit((long)va_arg(ap, int), 10);
+		i += print_digit(va_arg(ap, int), 10);
 	else if (spec == 'i')
-		i += print_digit((long)va_arg(ap, int), 10);
+		i += print_digit(va_arg(ap, int), 10);
 	else if (spec == 'u')
 		i += print_digit((long)va_arg(ap, unsigned int), 10);
 	else if (spec == 'x')
