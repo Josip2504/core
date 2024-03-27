@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/27 10:50:57 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:06:17 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@ char	*ft_line(char *stat)
 	int		i;
 
 	i = 0;
-	if (!stat[i])
+	if (!stat[i] || !*stat)
 		return (NULL);
 	while (stat[i] != '\n' && stat[i])
 		i++;
 	res = (char *)malloc((i + 2) * sizeof(char));
 	if (!res)
 		return (NULL);
-	i = -1;
-	while (stat[++i] != '\n' && stat[++i])
+	i = 0;
+	while (stat[i] != '\n' && stat[i])
 	{
 		res[i] = stat[i];
+		i++;
 	}
 	if (stat[i] == '\n')
-		res[i] = '\n';
-	res[++i] = '\0';
+		res[i++] = '\n';
+	res[i] = '\0';
 	return (res);
 }
 
@@ -44,13 +45,13 @@ char	*ft_next(char *stat)
 
 	i = 0;
 	leftover = 0;
-	while (stat[i] != '\n' && stat[i])
-		i++;
-	if (!stat[i])
+	if (!stat || !*stat)
 	{
 		free(stat);
 		return (NULL);
 	}
+	while (stat[i] != '\n' && stat[i])
+		i++;
 	line = (char *)malloc((ft_strlen(stat) - i + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
@@ -65,22 +66,50 @@ char	*ft_next(char *stat)
 char	*ft_buffer(int fd, char *stat)
 {
 	char	*buffer;
+	char	*temp;
 	int		i;
 
-	i = 1;
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
-		return (NULL);
-	while (!ft_strrchr(stat, '\n') && i != 0)
 	{
-		i = read(fd, buffer, BUFFER_SIZE);
-		if (i == -1)
+		free(buffer);
+		return (NULL);
+	}
+	i = read(fd, buffer, BUFFER_SIZE);
+	if (i < 0)
+	{
+		free (buffer);
+		return (NULL);
+	}
+	buffer[i] = '\0';
+	if (!stat)
+	{
+		stat = malloc(1);
+		if (!stat)
+		{
+			free (buffer);
+			return (NULL);
+		}
+		stat[0] = '\0';
+	}
+	while (ft_strrchr(stat, '\n') == NULL && i > 0)
+	{
+		
+		temp = ft_strjoin(stat, buffer);
+		if (!temp)
 		{
 			free(buffer);
 			return (NULL);
 		}
+		stat = temp;
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (i < 0)
+		{
+			free (buffer);
+			free (stat);
+			return (NULL);
+		}
 		buffer[i] = '\0';
-		stat = ft_strjoin(stat, buffer);
 	}
 	free(buffer);
 	return (stat);
@@ -98,5 +127,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(stat);
 	stat = ft_next(stat);
+	free(stat);
 	return (line);
 }

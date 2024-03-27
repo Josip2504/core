@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:31 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/27 10:42:33 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:02:58 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	*ft_strjoin(char *stat, char *buff)
 	if (!stat)
 	{
 		stat = (char *)malloc(1 * sizeof(char));
+		if (!stat)
+			return (NULL);
 		stat[0] = '\0';
 	}
 	if (!stat || !buff)
@@ -62,14 +64,19 @@ char	*ft_strjoin(char *stat, char *buff)
 			(ft_strlen(stat) + ft_strlen(buff) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-	i = -1;
+	i = 0;
+	while (stat[i] != '\0')
+	{
+		res[i] = stat[i];
+		i++;
+	}
 	j = 0;
-	if (stat)
-		while (stat[++i] != '\n')
-			res[i] = stat[i];
 	while (buff[j] != '\0')
-		res[i++] = buff[j++];
-	res[ft_strlen(stat) + ft_strlen(buff)] = '\0';
+	{
+		res[i + j] = buff[j];
+		j++;
+	}
+	res[i + j] = '\0';
 	free(stat);
 	return (res);
 }
