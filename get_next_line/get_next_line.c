@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/27 15:06:17 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:28:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ char	*ft_next(char *stat)
 		free(stat);
 		return (NULL);
 	}
-	while (stat[i] != '\n' && stat[i])
+	while (stat[i] != '\n' && stat[i] != '\0')
 		i++;
-	line = (char *)malloc((ft_strlen(stat) - i + 1) * sizeof(char));
+	line = (char *)malloc((i + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
-	i++;
-	while (stat[i])
+	i = 0;
+	while (stat[i] && stat[i] != '\n')
 		line[leftover++] = stat[i++];
 	line[leftover] = '\0';
 	free(stat);
