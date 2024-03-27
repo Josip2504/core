@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/27 10:29:10 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:50:57 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_line(char *stat)
 		res[i] = stat[i];
 	}
 	if (stat[i] == '\n')
-		res[++i] = '\n';
+		res[i] = '\n';
 	res[++i] = '\0';
 	return (res);
 }
@@ -51,7 +51,7 @@ char	*ft_next(char *stat)
 		free(stat);
 		return (NULL);
 	}
-	line = (char *)malloc((ft_strlen(stat) + 1 - i) * sizeof(char));
+	line = (char *)malloc((ft_strlen(stat) - i + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i++;
