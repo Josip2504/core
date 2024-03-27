@@ -6,11 +6,35 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/26 16:38:54 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:29:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_line(char *stat)
+{
+	char	*res;
+	int		i;
+
+	i = 0;
+	if (!stat[i])
+		return (NULL);
+	while (stat[i] != '\n' && stat[i])
+		i++;
+	res = (char *)malloc((i + 2) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (stat[++i] != '\n' && stat[++i])
+	{
+		res[i] = stat[i];
+	}
+	if (stat[i] == '\n')
+		res[++i] = '\n';
+	res[++i] = '\0';
+	return (res);
+}
 
 char	*ft_next(char *stat)
 {
@@ -27,36 +51,15 @@ char	*ft_next(char *stat)
 		free(stat);
 		return (NULL);
 	}
-	line = malloc((ft_strlen(stat) + 1 - i) * sizeof(char));
+	line = (char *)malloc((ft_strlen(stat) + 1 - i) * sizeof(char));
+	if (!line)
+		return (NULL);
 	i++;
 	while (stat[i])
 		line[leftover++] = stat[i++];
-	free (stat);
+	line[leftover] = '\0';
+	free(stat);
 	return (line);
-}
-
-char	*ft_line(char *stat)
-{
-	char	*size;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!stat[i])
-		return (NULL);
-	while (stat[i] != '\n' && stat[i])
-		i++;
-	size = malloc(i + 2 * sizeof(char));
-	while (stat[i] != '\n' && stat[i])
-	{
-		size[j] = stat[i];
-		i++;
-		j++;
-	}
-	if (stat[i] == '\n' && stat[i])
-		size[++j] = '\n';
-	return (size);
 }
 
 char	*ft_buffer(int fd, char *stat)
@@ -65,10 +68,10 @@ char	*ft_buffer(int fd, char *stat)
 	int		i;
 
 	i = 1;
-	if (!stat)
-		stat = malloc(1 * 1);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	while (i > 0)
+	if (!buffer)
+		return (NULL);
+	while (!ft_strrchr(stat, '\n') && i != 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
@@ -76,14 +79,11 @@ char	*ft_buffer(int fd, char *stat)
 			free(buffer);
 			return (NULL);
 		}
-		buffer[i] = 0;
-		free (buffer);
-		free (stat);
-		if (ft_strrchr(buffer, '\n'))
-			break ;
+		buffer[i] = '\0';
+		stat = ft_strjoin(stat, buffer);
 	}
-	free (buffer);
-	return (buffer);
+	free(buffer);
+	return (stat);
 }
 
 char	*get_next_line(int fd)

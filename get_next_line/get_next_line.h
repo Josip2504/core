@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/26 16:29:32 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:32:25 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 char	*get_next_line(int fd);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strlen(char *s);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif
