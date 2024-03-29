@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/29 16:25:29 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:42:49 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char	*ft_buffer(char *buff, char *line)
 		return (buff);
 	len = ft_strlen(line);
 	if ((int)ft_strlen(buff) == len)
-	{
-		free(buff);
-		return (NULL);
-	}
+		return (free(buff), NULL);
 	newbuff = ft_substr(buff, len, ft_strlen(buff) - len);
+	if (!newbuff)
+		return (free(buff), NULL);
 	free(buff);
 	return (newbuff);
 }
@@ -36,20 +35,17 @@ char	*ft_next(int fd, char *buff)
 	char	*newbuff;
 	id_t	nlen;
 
-	s = ft_new(fd);
+	s = ft_new(fd, buff);
 	if (!s)
 		return (NULL);
 	if (!s[0])
-	{
-		free(s);
-		return (buff);
-	}
+		return (free(s), buff);
 	if (!buff)
 		return (s);
 	nlen = ft_strlen(buff) + ft_strlen(s);
 	newbuff = malloc(nlen + 1);
 	if (!newbuff)
-		return (NULL);
+		return (free(s), NULL);
 	ft_strlcpy(newbuff, buff, nlen + 1);
 	ft_strlcat(newbuff, s, nlen + 1);
 	free(buff);
@@ -57,20 +53,17 @@ char	*ft_next(int fd, char *buff)
 	return (newbuff);
 }
 
-char	*ft_new(int fd)
+char	*ft_new(int fd, char *stat)
 {
 	char	*s;
 	int		i;
 
 	s = malloc(BUFFER_SIZE + 1);
 	if (!s)
-		return (free(s), NULL);
+		return (free(stat), free(s), NULL);
 	i = read(fd, s, BUFFER_SIZE);
 	if (i < 0)
-	{
-		free(s);
-		return (NULL);
-	}
+		return (free(s), NULL);
 	s[i] = '\0';
 	return (s);
 }
@@ -83,11 +76,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
 	{
-		if (stat)
-		{
-			free(stat);
-			stat = NULL;
-		}
+		free(stat);
+		stat = NULL;
 		return (NULL);
 	}
 	line = NULL;

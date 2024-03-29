@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/29 13:08:38 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:32:48 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_buffer(char *buff, char *line);
 char	*ft_next(int fd, char *buff);
-char	*ft_new(int fd);
+char	*ft_new(int fd, char *stat);
 
 #endif
