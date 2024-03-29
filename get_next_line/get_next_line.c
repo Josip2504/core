@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/29 16:22:21 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:25:29 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,33 +78,33 @@ char	*ft_new(int fd)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stat[4096];
+	static char	*stat;
 	size_t		olen;
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
 	{
-		if (stat[fd])
+		if (stat)
 		{
-			free(stat[fd]);
-			stat[fd] = NULL;
+			free(stat);
+			stat = NULL;
 		}
 		return (NULL);
 	}
 	line = NULL;
-	if ((int)ft_strrchr(stat[fd], '\n') == -1)
+	if ((int)ft_strrchr(stat, '\n') == -1)
 	{
-		olen = ft_strlen(stat[fd]);
-		stat[fd] = ft_next(fd, stat[fd]);
-		if (olen == ft_strlen(stat[fd]) && stat[fd])
-			line = ft_substr(stat[fd], 0, ft_strlen(stat[fd]));
+		olen = ft_strlen(stat);
+		stat = ft_next(fd, stat);
+		if (olen == ft_strlen(stat) && stat)
+			line = ft_substr(stat, 0, ft_strlen(stat));
 	}
-	if (!stat[fd])
+	if (!stat)
 		return (NULL);
-	if (!line && (int)ft_strrchr(stat[fd], '\n') != -1)
-		line = ft_substr(stat[fd], 0, (size_t)ft_strrchr(stat[fd], '\n') + 1);
+	if (!line && (int)ft_strrchr(stat, '\n') != -1)
+		line = ft_substr(stat, 0, (size_t)ft_strrchr(stat, '\n') + 1);
 	if (line)
 	{
-		stat[fd] = ft_buffer(stat[fd], line);
+		stat = ft_buffer(stat, line);
 		return (line);
 	}
 	return (get_next_line(fd));
