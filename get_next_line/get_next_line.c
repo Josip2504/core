@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/29 13:27:08 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:22:21 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_new(int fd)
 
 	s = malloc(BUFFER_SIZE + 1);
 	if (!s)
-		return (NULL);
+		return (free(s), NULL);
 	i = read(fd, s, BUFFER_SIZE);
 	if (i < 0)
 	{
@@ -78,7 +78,7 @@ char	*ft_new(int fd)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stat[100];
+	static char	*stat[4096];
 	size_t		olen;
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
