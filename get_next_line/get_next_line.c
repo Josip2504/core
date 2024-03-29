@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/28 15:24:21 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:27:08 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,18 @@ char	*ft_new(int fd)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stat[4096];
+	static char	*stat[100];
 	size_t		olen;
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
+	{
+		if (stat[fd])
+		{
+			free(stat[fd]);
+			stat[fd] = NULL;
+		}
 		return (NULL);
+	}
 	line = NULL;
 	if ((int)ft_strrchr(stat[fd], '\n') == -1)
 	{
