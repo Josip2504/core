@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 11:50:31 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/02 14:41:39 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/04/02 16:10:33 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/04/02 16:11:16 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strrchr(const char *s, int c)
 {

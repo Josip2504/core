@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/02 16:10:26 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/04/02 16:10:58 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/04/02 16:41:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_buffer(char *buff, char *line)
 {
@@ -70,6 +70,7 @@ char	*ft_new(int fd, char *stat)
 	{
 		free(stat);
 		free(s);
+		stat = NULL;
 		return (NULL);
 	}
 	s[i] = '\0';
@@ -108,14 +109,14 @@ char	*ft_get_line(int fd, char **stat)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stat;
+	static char	*stat[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
 	{
-		free(stat);
-		stat = NULL;
+		free(stat[fd]);
+		stat[fd] = NULL;
 		return (NULL);
 	}
-	line = ft_get_line(fd, &stat);
+	line = ft_get_line(fd, &stat[fd]);
 	return (line);
 }
