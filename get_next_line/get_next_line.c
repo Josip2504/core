@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:42 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/03/29 17:42:49 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:42:52 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,39 @@ char	*ft_new(int fd, char *stat)
 	return (s);
 }
 
+char	*ft_get_line(int fd, char **stat)
+{
+	char	*line;
+	size_t	olen;
+	char	*tmp;
+
+	tmp = NULL;
+	line = NULL;
+	if ((int)ft_strrchr(*stat, '\n') == -1)
+	{
+		olen = ft_strlen(*stat);
+		tmp = ft_next(fd, *stat);
+		*stat = tmp;
+		if (olen == ft_strlen(*stat) && *stat)
+			line = ft_substr(*stat, 0, ft_strlen(*stat));
+	}
+	if (!*stat)
+		return (NULL);
+	if (!line && (int)ft_strrchr(*stat, '\n') != -1)
+		line = ft_substr(*stat, 0, (size_t)ft_strrchr(*stat, '\n') + 1);
+	if (line)
+	{
+		tmp = *stat;
+		*stat = ft_buffer(*stat, line);
+		return (line);
+	}
+	return (get_next_line(fd));
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*stat;
-	size_t		olen;
 
 	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
 	{
@@ -80,22 +108,6 @@ char	*get_next_line(int fd)
 		stat = NULL;
 		return (NULL);
 	}
-	line = NULL;
-	if ((int)ft_strrchr(stat, '\n') == -1)
-	{
-		olen = ft_strlen(stat);
-		stat = ft_next(fd, stat);
-		if (olen == ft_strlen(stat) && stat)
-			line = ft_substr(stat, 0, ft_strlen(stat));
-	}
-	if (!stat)
-		return (NULL);
-	if (!line && (int)ft_strrchr(stat, '\n') != -1)
-		line = ft_substr(stat, 0, (size_t)ft_strrchr(stat, '\n') + 1);
-	if (line)
-	{
-		stat = ft_buffer(stat, line);
-		return (line);
-	}
-	return (get_next_line(fd));
+	line = ft_get_line(fd, &stat);
+	return (line);
 }
