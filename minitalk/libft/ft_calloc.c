@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/10 14:28:49 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/12 22:18:34 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	pid_t server_pid;
+	size_t	product;
+	void	*memory;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	product = count * size;
+	memory = malloc(product);
+	if (!memory)
+		return (NULL);
+	ft_bzero(memory, product);
+	return (memory);
 }

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/08 10:41:02 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 11:02:47 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <string.h>
 
-int	main(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	pid_t server_pid;
+	size_t			i;
+	unsigned char	*str;
+	unsigned char	to_find;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	i = 0;
+	str = (unsigned char *) s;
+	to_find = (unsigned char) c;
+	while (n > i)
+	{
+		if (str[i] == to_find)
+			return ((void *) &str[i]);
+		i++;
+	}
+	return (NULL);
 }

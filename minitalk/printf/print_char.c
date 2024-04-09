@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 15:10:54 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/22 11:22:54 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	print_char(int c)
 {
-	pid_t server_pid;
-
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	return (write(1, &c, 1));
 }

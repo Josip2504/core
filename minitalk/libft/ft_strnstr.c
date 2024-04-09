@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/09 19:16:56 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:56:35 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	pid_t server_pid;
+	size_t	i;
+	size_t	j;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	i = 0;
+	j = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
+	{
+		while (haystack[i + j] == needle[j] && haystack[i + j]
+			&& len > i + j)
+		{
+			j++;
+		}
+		if (needle[j] == '\0')
+			return ((char *)haystack + i);
+		i++;
+		j = 0;
+	}
+	return (NULL);
 }

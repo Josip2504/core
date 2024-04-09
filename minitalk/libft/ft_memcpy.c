@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/08 15:34:48 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:16:15 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <string.h>
 
-int	main(void)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	pid_t server_pid;
+	char	*d;
+	char	*s;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	d = (char *) dst;
+	s = (char *) src;
+	if (!dst && !src)
+		return (dst);
+	while (n--)
+		*d++ = *s++;
+	return (dst);
 }

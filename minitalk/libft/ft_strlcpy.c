@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 12:51:49 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:56:29 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	pid_t server_pid;
+	size_t	srclen;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	srclen = ft_strlen(src);
+	if (srclen + 1 < size)
+		ft_memcpy(dest, src, srclen + 1);
+	else if (size != 0)
+	{
+		ft_memcpy(dest, src, size - 1);
+		dest[size - 1] = 0;
+	}
+	return (srclen);
 }

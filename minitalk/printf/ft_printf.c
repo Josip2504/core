@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 12:25:39 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/21 14:39:52 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	ft_printf(const char *format, ...)
 {
-	pid_t server_pid;
+	va_list	ap;
+	int		count;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	count = 0;
+	va_start(ap, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			count += print_format(*(++format), ap);
+			if (count < 0)
+				return (-1);
+		}
+		else
+		{
+			count += print_char(*format);
+			if (count < 0)
+				return (-1);
+		}
+		++format;
+	}
+	va_end(ap);
+	return (count);
 }

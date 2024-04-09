@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/12 15:32:06 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/12 15:35:35 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-	pid_t server_pid;
+	int	i;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
 }

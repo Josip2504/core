@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 14:34:01 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/04/09 15:42:05 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(void)
-{
-	pid_t server_pid;
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <stdio.h>
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
-}
+int		ft_printf(const char *format, ...);
+int		print_format(char spec, va_list ap);
+int		print_char(int c);
+int		print_str(char *str);
+int		print_digit(long n, int base);
+int		print_x(long n, int base);
+int		print_ptr(unsigned long ptr, int base);
+
+#endif

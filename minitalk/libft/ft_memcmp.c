@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/08 11:54:50 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/09 19:03:35 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <string.h>
 
-int	main(void)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	pid_t server_pid;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
+	size_t				i;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	i = 0;
+	while (n > i && *(str1 + i) == *(str2 + i))
+		i++;
+	if (n == i)
+		return (0);
+	return (*(str1 + i) - *(str2 + i));
 }

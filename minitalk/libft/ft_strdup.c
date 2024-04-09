@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/10 15:04:47 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 15:41:35 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strdup(const char *s1)
 {
-	pid_t server_pid;
+	char	*s2;
+	size_t	len;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	len = ft_strlen(s1) + 1;
+	s2 = malloc(len);
+	if (!s2)
+		return (NULL);
+	ft_strlcpy(s2, (char *)s1, len);
+	return (s2);
 }

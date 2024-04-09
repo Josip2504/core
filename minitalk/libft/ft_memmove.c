@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 11:08:46 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:15:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <string.h>
 
-int	main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	pid_t server_pid;
+	char	*dest;
+	char	*source;
+	size_t	i;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	dest = (char *) dst;
+	source = (char *) src;
+	i = 0;
+	if (!dst && !src)
+		return (NULL);
+	if (dest > source)
+	{
+		while (len--)
+			dest[len] = source[len];
+	}
+	else
+	{
+		while (len > i)
+		{
+			dest[i] = source[i];
+			i++;
+		}
+	}
+	return (dst);
 }

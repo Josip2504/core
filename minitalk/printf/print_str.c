@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 15:12:22 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/21 15:47:46 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	print_str(char *str)
 {
-	pid_t server_pid;
+	int	count;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	count = 0;
+	if (str == NULL)
+	{
+		return (write (1, "(null)", 6));
+	}
+	if (!str)
+		return (-1);
+	while (*str)
+	{
+		count += print_char((int)*str);
+		if (count < 0)
+			return (-1);
+		++str;
+	}
+	return (count);
 }

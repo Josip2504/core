@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 10:31:20 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 14:58:08 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	pid_t server_pid;
+	unsigned char	*ch;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	ch = b;
+	while (len > 0)
+	{
+		*ch = c;
+		ch++;
+		len--;
+	}
+	return (b);
 }

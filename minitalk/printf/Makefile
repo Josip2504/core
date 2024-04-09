@@ -5,48 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/09 11:19:38 by jsamardz          #+#    #+#              #
-#    Updated: 2024/04/09 15:39:40 by jsamardz         ###   ########.fr        #
+#    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
+#    Updated: 2024/03/22 12:43:00 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS = -Wall -Werror -Wextra
-SRC = server.c client.c
+SRC = ft_printf.c print_format.c print_char.c print_str.c print_digit.c print_x.c \
+print_ptr.c
 OBJ = $(SRC:.c=.o)
-NAME = minitalk
-RM = rm -f
+NAME = libftprintf.a
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
 %.o: %.cc
-	cc $(CFLAGS) -Ilibft -Iprintf-c $? -o $@
-
-$(NAME): server client
-
-libft:
-	make -C libft
-
-printf:
-	make -C printf
-
-server: server.o
-	@make -C libft
-	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o server
-
-client: client.o
-	@make -C libft
-	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o client
+	cc $(CFLAGS) -c $< -o $@ 
 
 clean:
-	make clean -C libft
-	make clean -C printf
-	$(RM) $(OBJ)
+	rm -f $(OBJ)
 
-fclean: clean
-	$(RM) server client
+fclean:
+	rm -f $(OBJ)
+	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: libft printf
+.PHONY: all clean fclean re

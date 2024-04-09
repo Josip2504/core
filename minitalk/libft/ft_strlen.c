@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/06 08:58:28 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/11 21:13:01 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+size_t	ft_strlen(const char *s)
 {
-	pid_t server_pid;
+	size_t	i;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	i = 0;
+	while (s[i] != 0)
+	{
+		i++;
+	}
+	return (i);
 }

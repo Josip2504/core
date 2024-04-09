@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/07 10:58:23 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/10 14:58:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_bzero(void *s, size_t n)
 {
-	pid_t server_pid;
+	unsigned char	*ch;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	ch = s;
+	while (n > 0)
+	{
+		*ch = 0;
+		ch++;
+		n--;
+	}
 }

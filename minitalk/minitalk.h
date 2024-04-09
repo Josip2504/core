@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:25:28 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 13:27:58 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:43:36 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include <signal.h>
 # include <unistd.h>
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include "libft/libft.h"
+# include "printf.h"
 
 #endif

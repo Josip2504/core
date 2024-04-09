@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:19:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/09 15:43:49 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/06 19:02:19 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/03/08 21:30:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <stddef.h>
 
-int	main(void)
+char	*ft_strrchr(const char *s, int c)
 {
-	pid_t server_pid;
+	int	len;
 
-	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	len = 0;
+	while (*s)
+	{
+		len++;
+		s++;
+	}
+	while (len >= 0)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		len--;
+		s--;
+	}
+	return (NULL);
 }
