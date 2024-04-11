@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/09 11:19:38 by jsamardz          #+#    #+#              #
-#    Updated: 2024/04/09 15:39:40 by jsamardz         ###   ########.fr        #
+#    Created: 2024/04/11 10:51:35 by jsamardz          #+#    #+#              #
+#    Updated: 2024/04/11 10:57:13 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM = rm -f
 all: $(NAME)
 
 %.o: %.cc
-	cc $(CFLAGS) -Ilibft -Iprintf-c $? -o $@
+	cc $(CFLAGS) -Ilibft -Iprintf -c $? -o $@
 
 $(NAME): server client
 
@@ -32,9 +32,9 @@ printf:
 server: server.o
 	@make -C libft
 	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o server
+	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o sever
 
-client: client.o
+client:  client.o
 	@make -C libft
 	@make -C printf
 	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o client
