@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 10:51:35 by jsamardz          #+#    #+#              #
-#    Updated: 2024/04/11 10:57:13 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/04/11 16:24:57 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,13 @@ printf:
 server: server.o
 	@make -C libft
 	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o sever
+	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o server
 
 client:  client.o
 	@make -C libft
 	@make -C printf
 	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o client
+
 
 clean:
 	make clean -C libft
