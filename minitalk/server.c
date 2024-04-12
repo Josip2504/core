@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:51:11 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/12 10:36:34 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:46:30 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,30 @@
 
 void	signal_handler(int signum)
 {
-	static int	str;
-	static int	bitcount;
-
-	if (signum == SIGUSR2)
-		str |= (0x01 << bitcount);
-	bitcount++;
-	if (bitcount == 8)
+	static char	receved_char;
+	static char	bit_count;
+	if (signum == SIGUSR1)
+		receved_char |= (0 << bit_count);
+	else if (signum == SIGUSR2)
+		receved_char |= (1 << bit_count);
+	bit_count++;
+	if (bit_count == 8)
 	{
-		if (str == '\n')
-			ft_printf("end\n");
-		else
-			ft_printf("message: %c\n", str);
-		str = 0;
-		bitcount = 0;
+		if (receved_char == '\0')
+		{
+			ft_printf("\n");
+			return ;
+		}
+		ft_printf("%c", receved_char);
+		receved_char = 0;
+		bit_count = 0;
 	}
 }
 
 int	main(void)
 {
 	pid_t	server_pid;
-
+	
 	server_pid = getpid();
 	ft_printf("Server PID: %d\n", server_pid);
 	signal(SIGUSR1, signal_handler);

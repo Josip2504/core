@@ -6,11 +6,14 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:51:00 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/12 10:06:12 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:45:58 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+// sigusr1 is sendin 0
+// sigusr2 is sendin 1
 
 void	ft_send(pid_t server_pid, char letter)
 {
@@ -20,10 +23,11 @@ void	ft_send(pid_t server_pid, char letter)
 	while (i < 8)
 	{
 		if ((letter & (0x01 << i)) == 0)
-			kill(server_pid, SIGUSR2);
-		else
 			kill(server_pid, SIGUSR1);
+		else
+			kill(server_pid, SIGUSR2);
 		i++;
+		usleep(100000);
 	}
 }
 
@@ -31,21 +35,16 @@ int	main(int ac, char **av)
 {
 	pid_t	server_pid;
 	char	*str;
-	int		i;
 
-	i = 0;
 	str = av[2];
 	server_pid = ft_atoi(av[1]);
-	if (ac == 3)
-	{
-		while (*str)
-		{
-			ft_send(server_pid, *str);
-			str++;
-		}
-		ft_send(server_pid, '\n');
-	}
-	else
+	if (ac != 3)
 		return (-1);
+	while (*str)
+	{
+		ft_send(server_pid, *str);
+		str++;
+	}
+	ft_send(server_pid, '\0');
 	return (0);
 }
