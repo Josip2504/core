@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:51:00 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/12 11:45:58 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/04/12 12:43:32 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_send(pid_t server_pid, char letter)
 			kill(server_pid, SIGUSR1);
 		else
 			kill(server_pid, SIGUSR2);
+		usleep(100);
 		i++;
-		usleep(100000);
 	}
 }
 
