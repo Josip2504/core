@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 10:51:35 by jsamardz          #+#    #+#              #
-#    Updated: 2024/04/11 16:24:57 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/04/12 09:51:46 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,34 +19,36 @@ RM = rm -f
 all: $(NAME)
 
 %.o: %.cc
-	cc $(CFLAGS) -Ilibft -Iprintf -c $? -o $@
+	@cc $(CFLAGS) -Ilibft -Iprintf -c $? -o $@
 
 $(NAME): server client
 
 libft:
-	make -C libft
+	@make -C libft
 
 printf:
-	make -C printf
+	@make -C printf
 
 server: server.o
 	@make -C libft
 	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o server
+	@cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o server
 
 client:  client.o
 	@make -C libft
 	@make -C printf
-	cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o client
+	@cc $(CFLAGS) $? -Llibft -lft -Lprintf -lftprintf -o client
 
 
 clean:
-	make clean -C libft
-	make clean -C printf
-	$(RM) $(OBJ)
+	@echo "clean"
+	@make clean -C libft
+	@make clean -C printf
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) server client
+	@echo "fclean"
+	@$(RM) server client
 
 re: fclean all
 

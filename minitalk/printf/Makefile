@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
-#    Updated: 2024/03/22 12:43:00 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/04/12 09:51:29 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,17 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 %.o: %.cc
-	cc $(CFLAGS) -c $< -o $@ 
+	@cc $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean:
-	rm -f $(OBJ)
-	rm -f $(NAME)
+	@rm -f $(OBJ)
+	@rm -f $(NAME)
 
 re: fclean all
 .PHONY: all clean fclean re
