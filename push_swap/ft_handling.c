@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_handling.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/03 13:06:17 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/03 11:34:08 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/03 11:50:02 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft/libft.h"
-# include "printf/ft_printf.h"
-# include <limits.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_stack
+void	ft_free(char **str)
 {
-	int				value;
-	struct s_stack	*next;
-}	t_stack;
+	int	i;
 
-int		ft_input(int ac, char **av);
-int		ft_duplicate(int i, char **res, int temp);
-void	ft_free(char **str);
-void	ft_error(char *str);
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+		free(str[i--]);
+}
 
-#endif
+void	ft_error(char *str)
+{
+	ft_printf("%s", str);
+	exit(0);
+}

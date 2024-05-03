@@ -6,30 +6,34 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:50:03 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/30 13:19:19 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/03 13:10:33 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	main(int ac, char **av)
-// {
-// 	t_stack *stack_a;
-// 	t_stack *stack_b;
+void	ft_push(t_stack *stack, int num)
+{
+	stack->value = num;
+	printf("%d\n", stack->value);
+}
 
-// 	stack_a = NULL;
-// 	stack_b = NULL;
-// 	if (ac < 2)
-// 		return (-1);
-// 	ft_input(ac, av);
-// }
+int	main(int ac, char **av)
+{
+	t_stack *stack_a;
+	t_stack *stack_b;
+	int		num;
 
-int main(int argc, char **argv) {
-    if (argc < 2) {
-        ft_printf("Usage: %s <input_string>\n", argv[0]);
-        return 1;
-    }
-
-    ft_input(argc, argv);
-    return 0;
+	stack_a = NULL;
+	stack_b = NULL;
+	if (ac < 2)
+		return (-1);
+	num = ft_input(ac, av);
+	stack_a = (t_stack *)malloc(sizeof(t_stack));
+	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	ft_push(stack_a, num);
+	// check is sorted, if is -> free stacks
+	// sort stacks
+	// free stacks
+	return (0);
 }

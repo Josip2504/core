@@ -6,23 +6,13 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:44:52 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/04/30 13:40:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/03 13:28:57 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_duplicate(int i, char **res, int temp)
-{
-	i++;
-	while (res[i])
-	{
-		if (ft_atoi(res[i]) == temp)
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// checking is number
 
 int	ft_num(char *s)
 {
@@ -40,12 +30,30 @@ int	ft_num(char *s)
 	return (1);
 }
 
-void	ft_input(int ac, char **av)
+// checking for duplicates
+
+int	ft_duplicate(int i, char **res, int temp)
+{
+	i++;
+	while (res[i])
+	{
+		if (ft_atoi(res[i]) == temp)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+// checking is input correct and making it correct
+
+int	ft_input(int ac, char **av)
 {
 	char	**res;
 	int		i;
 	int		temp;
+	int		*temp_ar;
 
+	temp_ar = malloc((ac - 1) * sizeof(int));
 	i = 0;
 	if (ac == 2)
 		res = ft_split(av[1], 32);
@@ -57,12 +65,15 @@ void	ft_input(int ac, char **av)
 	while (res[i])
 	{
 		temp = ft_atoi(res[i]);
-		if (ft_num(res[i]))
-			ft_printf("Error\n");
-		if (ft_duplicate(i, res, temp))
-			ft_printf("Error\n");
+		if (!ft_num(res[i]))
+			ft_error("Error\n");
+		else if (ft_duplicate(i, res, temp))
+			ft_error("Error\n");
+		else if (temp > INT_MAX || temp < INT_MIN)
+			ft_error("Error\n");
+		else
+			temp_ar[i] = temp;
 		i++;
 	}
-	if (ac == 2)
-		ft_free(res);
+	return (temp);
 }
