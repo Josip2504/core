@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:50:03 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/06 14:24:11 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:33:54 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	main(int ac, char **av)
 	ft_input(ac, av);
 	stack_a = fill_stack(ac, av);
 	size_stack = stack_size(stack_a);
+	stack_id(stack_a, size_stack + 1);
 	ft_printf("%d", size_stack);
-	// check is sorted, if is -> free stacks
 	// sort stacks
-	// free stacks
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/06 13:05:30 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:30:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ t_stack	*fill_stack(int ac, char **av);
 void	add_to_bottom(t_stack *new, t_stack **stack);
 t_stack	*new_stack (int value);
 t_stack	*get_bottom(t_stack *stack);
+void	stack_id(t_stack *stack_a, int stack_size);
+void	free_stack(t_stack **stack);
 
 #endif
