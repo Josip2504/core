@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:44:52 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/03 13:28:57 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:43:06 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,12 @@ int	ft_duplicate(int i, char **res, int temp)
 
 // checking is input correct and making it correct
 
-int	ft_input(int ac, char **av)
+void	ft_input(int ac, char **av)
 {
 	char	**res;
 	int		i;
 	int		temp;
-	int		*temp_ar;
 
-	temp_ar = malloc((ac - 1) * sizeof(int));
 	i = 0;
 	if (ac == 2)
 		res = ft_split(av[1], 32);
@@ -71,9 +69,6 @@ int	ft_input(int ac, char **av)
 			ft_error("Error\n");
 		else if (temp > INT_MAX || temp < INT_MIN)
 			ft_error("Error\n");
-		else
-			temp_ar[i] = temp;
 		i++;
 	}
-	return (temp);
 }

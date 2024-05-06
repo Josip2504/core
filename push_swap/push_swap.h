@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/03 13:06:17 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:05:30 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,28 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stddef.h>
+# include <unistd.h>
 
 typedef struct s_stack
 {
 	int				value;
+	int				index;
+	int				pos;
+	int				pos_target;
+	int				cost_a;
+	int				cost_b;
 	struct s_stack	*next;
 }	t_stack;
 
-int		ft_input(int ac, char **av);
+void	ft_input(int ac, char **av);
 int		ft_duplicate(int i, char **res, int temp);
 void	ft_free(char **str);
 void	ft_error(char *str);
+int		stack_size(t_stack *stack);
+t_stack	*fill_stack(int ac, char **av);
+void	add_to_bottom(t_stack *new, t_stack **stack);
+t_stack	*new_stack (int value);
+t_stack	*get_bottom(t_stack *stack);
 
 #endif
