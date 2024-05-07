@@ -6,12 +6,12 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 11:39:03 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/06 13:12:06 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/05/07 12:37:59 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFALGS = -Wall -Werror -Wextra
-SRC = main.c ft_input.c ft_handling.c stacks.c init.c
+SRC = main.c ft_input.c ft_handling.c stacks.c push_swap.c rotate.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 RM = rm -f

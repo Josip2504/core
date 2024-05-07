@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 10:50:03 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/07 12:41:47 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/07 11:32:45 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/07 12:42:01 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_stack;
+	if (!is_sorted(*stack_a) && size == 2)
+		ft_ra(stack_a);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (ac < 2)
-		return (-1);
-	ft_input(ac, av);
-	stack_a = fill_stack(ac, av);
-	size_stack = stack_size(stack_a);
-	stack_id(stack_a, size_stack + 1);
-	push_swap(&stack_a, &stack_b, size_stack);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
-	return (0);
+int	is_sorted(t_stack *stack)
+{
+	while (stack->next != NULL)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

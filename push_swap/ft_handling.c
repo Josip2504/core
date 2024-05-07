@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:34:08 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/06 15:30:14 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:44:31 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,34 @@ void	free_stack(t_stack **stack)
 		*stack = s;
 	}
 	*stack = NULL;
+}
+// give id to every value inside a stack
+
+void	stack_id(t_stack *stack_a, int stack_size)
+{
+	t_stack	*tab;
+	t_stack	*top;
+	int		value;
+
+	while (--stack_size > 0)
+	{
+		top = NULL;
+		tab = stack_a;
+		value = INT_MIN;
+		while (tab)
+		{
+			if (tab->index == 0 && tab->value == INT_MIN)
+				tab->index = 1;
+			if (tab->index == 0 && tab->value > value)
+			{
+				value = tab->value;
+				top = tab;
+				tab = stack_a;
+			}
+			else
+				tab = tab->next;
+		}
+		if (top != NULL)
+			top->index = stack_size;
+	}
 }

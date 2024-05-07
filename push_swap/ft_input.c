@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:44:52 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/06 11:43:06 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:26:25 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // checking is number
 
-int	ft_num(char *s)
+static int	ft_num(char *s)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	ft_num(char *s)
 
 // checking for duplicates
 
-int	ft_duplicate(int i, char **res, int temp)
+static int	ft_duplicate(int i, char **res, int temp)
 {
 	i++;
 	while (res[i])

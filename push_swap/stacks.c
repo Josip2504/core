@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:54:27 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/06 14:24:17 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:44:14 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*get_bottom(t_stack *stack)
 
 //creates stack with value
 
-t_stack	*new_stack (int value)
+t_stack	*new_stack(int value)
 {
 	t_stack	*new;
 
@@ -72,4 +72,27 @@ int	stack_size(t_stack *stack)
 		size++;
 	}
 	return (size);
+}
+
+//filling stack
+
+t_stack	*fill_stack(int ac, char **av)
+{
+	t_stack	*stack_a;
+	int		i;
+	int		num;
+
+	num = 0;
+	i = 1;
+	stack_a = NULL;
+	while (i < ac)
+	{
+		num = ft_atoi(av[i]);
+		if (i == 1)
+			stack_a = new_stack(num);
+		else
+			add_to_bottom(new_stack(num), &stack_a);
+		i++;
+	}
+	return (stack_a);
 }
