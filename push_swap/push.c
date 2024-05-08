@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 10:50:03 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/08 12:29:32 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/08 12:17:51 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/08 13:31:51 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_push(t_stack **src, t_stack **dest)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_stack;
+	t_stack	*temp;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (ac < 2)
-		return (-1);
-	ft_input(ac, av);
-	stack_a = fill_stack(ac, av);
-	size_stack = stack_size(stack_a);
-	stack_id(stack_a, size_stack + 1);
-	push_swap(&stack_a, &stack_b, size_stack);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
-	return (0);
+	if (*src != NULL)
+	{
+		temp = (*src)->next;
+		(*src)->next = *dest;
+		*dest = *src;
+		*src = temp;
+	}
+}
+
+void	ft_pa(t_stack **stack_b, t_stack **stack_a)
+{
+	ft_push(stack_b, stack_a);
+	ft_printf("pa\n");
+}
+
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_push(stack_a, stack_b);
+	ft_printf("pb\n");
 }

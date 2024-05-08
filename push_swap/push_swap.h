@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/07 12:44:05 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:54:06 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,22 @@ void	ft_rotate(t_stack **stack);
 void	ft_ra(t_stack **stack_a);
 void	ft_rb(t_stack **stack_b);
 void	ft_rr(t_stack **stack_a, t_stack **stack_b);
+
+// swap
+void	ft_swap(t_stack *stack);
+void	ft_sa(t_stack **stack_a);
+void	ft_sb(t_stack **stack_b);
+void	ft_ss(t_stack **stack_a, t_stack **stack_b);
+
+// push
+void	ft_push(t_stack **src, t_stack **dest);
+void	ft_pa(t_stack **stack_b, t_stack **stack_a);
+void	ft_pb(t_stack **stack_a, t_stack **stack_b);
+
+// reverse rotate
+void	ft_r_rotate(t_stack **stack);
+void	ft_rra(t_stack **stack_a);
+void	ft_rrb(t_stack **stack_b);
+void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:34:08 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/07 12:44:31 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/08 13:10:39 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
-// give id to every value inside a stack
+// give id to every value inside stack accordigly to value
 
 void	stack_id(t_stack *stack_a, int stack_size)
 {
