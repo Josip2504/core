@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/08 12:54:06 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:10:02 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_free(char **str);
 void	ft_error(char *str);
 void	free_stack(t_stack **stack);
 void	stack_id(t_stack *stack_a, int stack_size);
+int		ft_abs (int n);
 
 // stacks
 t_stack	*get_bottom(t_stack *stack);
@@ -51,6 +52,7 @@ t_stack	*fill_stack(int ac, char **av);
 // push_swap
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int size);
 int		is_sorted(t_stack *stack);
+void	sort_three(t_stack **stack);
 
 // rotate
 void	ft_rotate(t_stack **stack);
@@ -74,5 +76,18 @@ void	ft_r_rotate(t_stack **stack);
 void	ft_rra(t_stack **stack_a);
 void	ft_rrb(t_stack **stack_b);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
+
+// algorithm
+void	ft_algorithm(t_stack **stack_a, t_stack **stack_b);
+
+// target
+void	get_target_pos(t_stack **stack_a, t_stack **stack_b);
+
+// cost
+void	cost(t_stack **stack_a, t_stack **stack_b);
+void	cheapest_move(t_stack **stack_a, t_stack **stack_b);
+
+// move
+
 
 #endif

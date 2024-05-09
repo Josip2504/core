@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:32:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/08 13:32:09 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:22:25 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*find_biggest(t_stack *stack)
 	return (biggest);
 }
 
-static void	sort_three(t_stack **stack)
+void	sort_three(t_stack **stack)
 {
 	t_stack	*biggest;
 
@@ -53,8 +53,10 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	if (!is_sorted(*stack_a) && size == 2)
 		ft_rra(stack_a);
-	if (!is_sorted(*stack_a) && size == 3)
+	else if (!is_sorted(*stack_a) && size == 3)
 		sort_three(stack_a);
+	else if (!is_sorted(*stack_a) && size > 3)
+		ft_algorithm(stack_a, stack_b);
 }
 
 int	is_sorted(t_stack *stack)
