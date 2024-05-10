@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:29:58 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/09 13:51:31 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:13:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // picking best target in stack_a for next element in stack_b
 
-static int get_tartget(t_stack **stack_a, int b_id, int target_pos, int target_id)
+static int get_target(t_stack **stack_a, int b_id, int target_pos, int target_id)
 {
 	t_stack	*a;
 
@@ -45,7 +45,7 @@ static int get_tartget(t_stack **stack_a, int b_id, int target_pos, int target_i
 
 // assiging postiont to elements from top to bottom
 
-static void	get_pos(t_stack **stack)
+void	get_pos(t_stack **stack)
 {
 	int		i;
 	t_stack	*temp;
@@ -73,7 +73,7 @@ void	get_target_pos(t_stack **stack_a, t_stack **stack_b)
 	get_pos(stack_a);
 	while(b)
 	{
-		target_pos = get_target(stack_a, b->next, target_pos, INT_MAX);
+		target_pos = get_target(stack_a, b->index, target_pos, INT_MAX);
 		b->pos_target = target_pos;
 		b = b->next;
 	}

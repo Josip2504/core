@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/09 14:10:02 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:13:49 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,13 @@ void	ft_algorithm(t_stack **stack_a, t_stack **stack_b);
 
 // target
 void	get_target_pos(t_stack **stack_a, t_stack **stack_b);
+void	get_pos(t_stack **stack);
 
 // cost
 void	cost(t_stack **stack_a, t_stack **stack_b);
 void	cheapest_move(t_stack **stack_a, t_stack **stack_b);
 
 // move
-
+void	ft_move(t_stack **stack_a, t_stack **stack_b, int a_cost, int b_cost);
 
 #endif
