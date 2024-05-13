@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:10:15 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/10 14:35:27 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:58:33 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	ft_move(t_stack **stack_a, t_stack **stack_b, int a_cost, int b_cost)
 {
 	if (a_cost < 0 && b_cost < 0)
 		rev_rotate_both(stack_a, stack_b, &a_cost, &b_cost);
-	else if (a_cost > 0 && b_cost > 0)
+	if (a_cost > 0 && b_cost > 0)
 		rotate_both(stack_a, stack_b, &a_cost, &b_cost);
 	rotate_a(stack_a, &a_cost);
-	rotate_b(stack_b, &b_cost);
+	rotate_b(stack_b, &b_cost);			// cost
 	ft_pa(stack_a, stack_b);
 }

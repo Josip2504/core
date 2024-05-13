@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:52:02 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/10 13:13:17 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:51:50 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	cheapest_move(t_stack **stack_a, t_stack **stack_b)
 	int		b_cost;
 	int		cheapest;
 
-	cheapest = INT_MAX;
 	temp = *stack_b;
+	cheapest = INT_MAX;
 	while (temp)
 	{
 		if (ft_abs(temp->cost_a) + ft_abs(temp->cost_b) < ft_abs(cheapest))
@@ -54,7 +54,7 @@ void	cost(t_stack **stack_a, t_stack **stack_b)
 		b->cost_b = b->pos;
 		if (b->pos > b_size / 2)
 			b->cost_b = (b_size - b->pos) * -1;
-		b->cost_a = b->pos_target;
+		b->cost_a = b->pos_target;				//
 		if (b->pos_target > a_size / 2)
 			b->cost_a = (a_size - b->pos_target) * -1;
 		b = b->next;

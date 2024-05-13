@@ -6,21 +6,21 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:32:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/10 13:13:27 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/13 13:25:01 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*find_biggest(t_stack *stack)
+static int	find_biggest(t_stack *stack)
 {
-	t_stack	*biggest;
+	int	biggest;
 
-	biggest = stack;
-	while (stack != NULL)
+	biggest = stack->index;
+	while (stack)
 	{
-		if (stack->index > biggest->index)
-			biggest = stack;
+		if (stack->index > biggest)
+			biggest = stack->index;
 		stack = stack->next;
 	}
 	return (biggest);
@@ -28,22 +28,15 @@ t_stack	*find_biggest(t_stack *stack)
 
 void	sort_three(t_stack **stack)
 {
-	t_stack	*biggest;
+	int	biggest;
 
 	biggest = find_biggest(*stack);
 	if (!is_sorted(*stack))
 	{
-		if (biggest == *stack)
+		if ((*stack)->index == biggest)
 			ft_ra(stack);
-		else if (biggest->next == NULL)
+		else if ((*stack)->next->index == biggest)
 			ft_rra(stack);
-		while (*stack != biggest)
-		{
-			if (biggest->index < (*stack)->next->index)
-				ft_rra(stack);
-			else
-				ft_ra(stack);
-		}
 		if ((*stack)->index > (*stack)->next->index)
 			ft_sa(stack);
 	}

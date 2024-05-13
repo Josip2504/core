@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:54:27 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/07 13:52:39 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:54:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_stack	*new_stack(int value)
 	new->index = 0;
 	new->pos = -1;
 	new->pos_target = -1;
-	new->cost_a = -1;
-	new->cost_b = -1;
+	new->cost_a = 0;
+	new->cost_b = 0;
 	new->next = NULL;
 	return (new);
 }

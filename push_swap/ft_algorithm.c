@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:37:09 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/10 14:50:50 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/13 16:04:05 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,6 @@ static int	ft_low_pos(t_stack **stack)
 		temp = temp->next;
 	}
 	return (low_pos);
-}
-
-static void	ft_shift(t_stack **stack_a)
-{
-	int	size;
-	int	low_pos;
-
-	size = stack_size(*stack_a);
-	low_pos = ft_low_pos(stack_a);
-	if (low_pos > size / 2)
-	{
-		while (low_pos < size)
-		{
-			ft_rra(stack_a);
-			low_pos++;
-		}
-	}
-	else
-	{
-		while (low_pos > 0)
-		{
-			ft_ra(stack_a);
-			low_pos--;
-		}
-	}
 }
 
 static void	push_unitl_three(t_stack **stack_a, t_stack **stack_b)
@@ -86,11 +61,36 @@ static void	push_unitl_three(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+static void	ft_shift(t_stack **stack_a)
+{
+	int	size;
+	int	low_pos;
+
+	size = stack_size(*stack_a);
+	low_pos = ft_low_pos(stack_a);
+	if (low_pos > size / 2)
+	{
+		while (low_pos < size)
+		{
+			ft_rra(stack_a);
+			low_pos++;
+		}
+	}
+	else
+	{
+		while (low_pos > 0)
+		{
+			ft_ra(stack_a);
+			low_pos--;
+		}
+	}
+}
+
 void	ft_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
 	push_unitl_three(stack_a, stack_b);
 	sort_three(stack_a);
-	while(*stack_b)          // infinite loop error
+	while(*stack_b)
 	{
 		get_target_pos(stack_a, stack_b);
 		cost(stack_a, stack_b);
