@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:29:58 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/13 13:45:10 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/14 00:26:03 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	get_target_pos(t_stack **stack_a, t_stack **stack_b)
 
 	b = *stack_b;
 	get_pos(stack_a);
-	get_pos(stack_a);
+	get_pos(stack_b);
 	target_pos = 0;
-	while(b)
+	while (b)
 	{
 		target_pos = get_target(stack_a, b->index, target_pos, INT_MAX);
 		b->pos_target = target_pos;
