@@ -6,25 +6,29 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 11:39:03 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/13 23:23:58 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/05/16 16:38:41 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFALGS = -Wall -Werror -Wextra
-SRC = main.c ft_input.c ft_handling.c stacks.c push_swap.c rotate.c swap.c push.c r_rotate.c ft_algorithm.c target.c cost.c moves.c
-OBJ = $(SRC:.c=.o)
+CFALGS = -Wall -Werror -Wextra -Iinclude
+SRC_DIR = src
+OBJ_DIR = obj
+SRC_FILES = main.c ft_input.c ft_handling.c stacks.c push_swap.c rotate.c swap.c push.c r_rotate.c ft_algorithm.c target.c cost.c moves.c
+SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 NAME = push_swap
 RM = rm -f
 
 all: $(NAME)
 
-%.o: %.cc
-	@cc $(CFALGS) -Ilibft -Iprintf -c $? -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	@cc $(CFLAGS) -Ilibft -Iprintf -c $< -o $@
 
 $(NAME): $(OBJ)
 	@make -C libft
 	@make -C printf
-	@cc $(CFALGS) $^ -Llibft -lft -Lprintf -lftprintf -o $@
+	@cc $(CFLAGS) $^ -Llibft -lft -Lprintf -lftprintf -o $@
 
 libft:
 	@make -C libft
@@ -36,7 +40,7 @@ clean:
 	@echo "clean"
 	@make clean -C libft
 	@make clean -C printf
-	@$(RM) $(OBJ)
+	@$(RM) -r $(OBJ_DIR)
 
 fclean:
 	@make clean
@@ -45,4 +49,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: libft printf
+.PHONY: libft printf clean fclean re

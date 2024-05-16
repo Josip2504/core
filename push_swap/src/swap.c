@@ -6,25 +6,24 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:44:48 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/08 12:06:38 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:26:11 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	ft_swap(t_stack *stack)
-{
-	t_stack	*first;
-	t_stack	*second;
+{	
 	int		temp;
 
-	if (stack != NULL && stack->next != NULL)
+	if (stack != NULL || stack->next != NULL)
 	{
-		first = stack;
-		second = stack->next;
-		temp = first->value;
-		first->value = second->value;
-		second->value = temp;
+		temp = stack->value;
+		stack->value = stack->next->value;
+		stack->next->value = temp;
+		temp = stack->index;
+		stack->index = stack->next->index;
+		stack->next->index = temp;
 	}
 }
 

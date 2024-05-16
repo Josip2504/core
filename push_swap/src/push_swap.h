@@ -6,15 +6,15 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/13 23:19:05 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:33:48 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
-# include "printf/ft_printf.h"
+# include "../libft/libft.h"
+# include "../printf/ft_printf.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -33,7 +33,7 @@ typedef struct s_stack
 }	t_stack;
 
 // input
-void	ft_input(int ac, char **av);
+void	ft_input(char **numbers, int num, int i);
 
 // handling
 void	ft_free(char **str);

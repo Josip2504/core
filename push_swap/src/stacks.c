@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:54:27 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/13 22:55:50 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:37:22 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,23 @@ t_stack	*fill_stack(int ac, char **av)
 	t_stack	*stack_a;
 	int		i;
 	int		num;
+	char	**numbers;
 
 	num = 0;
-	i = 1;
+	i = 0;
 	stack_a = NULL;
-	while (i < ac)
+	if (ac == 2)
+		numbers = ft_split(av[1], 32);
+	else
 	{
-		num = ft_atoi(av[i]);
-		if (i == 1)
+		numbers = av;
+		i = 1;
+	}
+	while (numbers[i])
+	{
+		num = ft_atoi(numbers[i]);
+		ft_input(numbers, num, i);
+		if (stack_a == NULL)
 			stack_a = new_stack(num);
 		else
 			add_to_bottom(new_stack(num), &stack_a);
