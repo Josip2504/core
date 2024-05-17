@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/16 14:33:48 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:09:28 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ void	ft_free(char **str);
 void	ft_error(char *str);
 void	free_stack(t_stack **stack);
 void	stack_id(t_stack *stack_a, int stack_size);
-int		ft_abs (int n);
+int		ft_abs(int n);
 
 // stacks
 t_stack	*get_bottom(t_stack *stack);
 t_stack	*new_stack(int value);
-void	add_to_bottom(t_stack *new, t_stack **stack);
 int		stack_size(t_stack *stack);
 t_stack	*fill_stack(int ac, char **av);
 
@@ -88,7 +87,7 @@ void	get_pos(t_stack **stack);
 void	cost(t_stack **stack_a, t_stack **stack_b);
 void	cheapest_move(t_stack **stack_a, t_stack **stack_b);
 
-// move
+// moves
 void	ft_move(t_stack **stack_a, t_stack **stack_b, int a_cost, int b_cost);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:34:08 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/10 13:13:21 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:50:04 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	stack_id(t_stack *stack_a, int stack_size)
 	}
 }
 
-int	ft_abs (int n)
+int	ft_abs(int n)
 {
 	if (n < 0)
 		return (n * -1);

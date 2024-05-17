@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:37:09 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/16 16:19:12 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:59:17 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	push_unitl_three(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	size = stack_size(*stack_a);
 	pushed = 0;
-	while (size > 6 && i < size && pushed < size / 2)
+	while (size > 6 && i++ < size && pushed < size / 2)
 	{
 		if ((*stack_a)->index <= size / 2)
 		{
@@ -52,7 +52,6 @@ static void	push_unitl_three(t_stack **stack_a, t_stack **stack_b)
 		}
 		else
 			ft_ra(stack_a);
-		i++;
 	}
 	while (size - pushed > 3)
 	{
@@ -90,7 +89,7 @@ void	ft_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
 	push_unitl_three(stack_a, stack_b);
 	sort_three(stack_a);
-	while(*stack_b)
+	while (*stack_b)
 	{
 		get_target_pos(stack_a, stack_b);
 		cost(stack_a, stack_b);

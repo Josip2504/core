@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 14:10:15 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/14 13:15:56 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:50:34 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	rotate_b(t_stack **stack_b, int *cost)
 	}
 }
 
-static void	rotate_both(t_stack **stack_a, t_stack **stack_b, int *a_cost, int *b_cost)
+static void	rotate_both(t_stack **stack_a, t_stack **stack_b,
+		int *a_cost, int *b_cost)
 {
 	while (*a_cost > 0 && *b_cost > 0)
 	{
@@ -56,7 +57,8 @@ static void	rotate_both(t_stack **stack_a, t_stack **stack_b, int *a_cost, int *
 	}
 }
 
-static void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b, int *a_cost, int *b_cost)
+static void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b,
+		int *a_cost, int *b_cost)
 {
 	while (*a_cost < 0 && *b_cost < 0)
 	{

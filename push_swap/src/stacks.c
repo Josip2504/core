@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:54:27 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/16 16:37:22 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:08:09 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_stack	*new_stack(int value)
 
 //adds element to stack bottom
 
-void	add_to_bottom(t_stack *new, t_stack **stack)
+static void	add_to_bottom(t_stack *new, t_stack **stack)
 {
 	t_stack	*bot;
 
@@ -85,7 +85,6 @@ t_stack	*fill_stack(int ac, char **av)
 
 	num = 0;
 	i = 0;
-	stack_a = NULL;
 	if (ac == 2)
 		numbers = ft_split(av[1], 32);
 	else

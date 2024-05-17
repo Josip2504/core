@@ -6,14 +6,14 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:44:48 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/16 16:26:11 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:52:01 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	ft_swap(t_stack *stack)
-{	
+{
 	int		temp;
 
 	if (stack != NULL || stack->next != NULL)

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:29:58 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/16 16:14:56 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:52:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 // picking best target in stack_a for next element in stack_b
 
-static int get_target(t_stack **stack_a, int b_id, int target_pos, int target_id)
+static int	get_target(t_stack **stack_a, int b_id,
+		int target_pos, int target_id)
 {
 	t_stack	*a;
 
