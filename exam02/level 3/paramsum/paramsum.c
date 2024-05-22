@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:24:14 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/20 14:28:19 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/21 12:57:13 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/21 13:08:51 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-size_t	ft_strcspn(const char *s, const char *reject)
+void	ft_n(int n)
+{
+	char i;
+
+	if (n >= 10)
+		ft_n(n / 10);
+	i = (n % 10) + '0';
+	write (1, &i, 1);
+}
+
+int main (int ac, char **av)
 {
 	int i = 0;
-	int j = 0;
-
-	while (s[i])
-	{
-		j = 0;
-		while (reject[j])
-		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
-		}
+	while (i < ac - 1)
 		i++;
-	}
-	return (i);
+	ft_n(i);
+	write (1, "\n", 1);
+	return (0);
 }

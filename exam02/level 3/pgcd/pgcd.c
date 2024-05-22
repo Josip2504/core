@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   pgcd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:24:14 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/20 14:28:19 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/21 12:08:17 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/21 12:24:46 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 
-size_t	ft_strcspn(const char *s, const char *reject)
+int main(int ac, char **av)
 {
-	int i = 0;
-	int j = 0;
+	int a;
+	int b;
 
-	while (s[i])
+	if (ac == 3)
 	{
-		j = 0;
-		while (reject[j])
+		a = atoi(av[1]);
+		b = atoi(av[2]);
+		if (a > 0 && b > 0)
 		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
+			while (a != b)
+			{
+				if (a > b)
+					a -= b;
+				else
+					b -= a;
+			}
+			printf ("%d", a);
 		}
-		i++;
 	}
-	return (i);
+	printf("\n");
+	return (0);
 }

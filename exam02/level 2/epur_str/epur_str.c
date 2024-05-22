@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   epur_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:24:14 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/20 14:28:19 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/20 14:29:49 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/20 14:35:23 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-size_t	ft_strcspn(const char *s, const char *reject)
+int main(int ac, char **av)
 {
 	int i = 0;
-	int j = 0;
-
-	while (s[i])
+	int f = 0;
+	char *s = av[1];
+	
+	if (ac == 2)
 	{
-		j = 0;
-		while (reject[j])
+		while (s[i] == 32 || s[i] == '\t')
+			i++;
+		while (s[i])
 		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
+			if (s[i] == 32 || s[i] == '\t')
+				f = 1;
+			if (!(s[i] == 32 || s[i] == '\t'))
+			{
+				if (f)
+					write (1, " ", 1);
+				f = 0;
+				write (1, &s[i], 1);
+			}
+			i++;
 		}
-		i++;
 	}
-	return (i);
+	write (1,"\n", 1);
+	return 0;
 }
