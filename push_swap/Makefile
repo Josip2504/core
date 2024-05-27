@@ -6,11 +6,11 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 11:39:03 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/16 16:38:41 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/05/27 12:45:05 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFALGS = -Wall -Werror -Wextra -Iinclude
+CFLAGS = -Wall -Werror -Wextra -Iinclude
 SRC_DIR = src
 OBJ_DIR = obj
 SRC_FILES = main.c ft_input.c ft_handling.c stacks.c push_swap.c rotate.c swap.c push.c r_rotate.c ft_algorithm.c target.c cost.c moves.c

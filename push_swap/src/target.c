@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:29:58 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/17 12:52:37 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:33:15 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ void	get_target_pos(t_stack **stack_a, t_stack **stack_b)
 		b->pos_target = target_pos;
 		b = b->next;
 	}
+}
+
+void	ft_free_num(int ac, char **numbers)
+{
+	if (ac == 2)
+		ft_free(numbers);
 }

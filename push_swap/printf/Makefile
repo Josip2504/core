@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 12:16:43 by jsamardz          #+#    #+#              #
-#    Updated: 2024/04/30 13:42:17 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/05/27 12:46:15 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
-%.o: %.cc
+%.o: %.c
 	@cc $(CFLAGS) -c $< -o $@ 
 
 clean:

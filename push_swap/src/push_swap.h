@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:46:45 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/17 13:09:28 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:33:31 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 }	t_stack;
 
 // input
-void	ft_input(char **numbers, int num, int i);
+int		ft_input(char **numbers, int num, int i);
 
 // handling
 void	ft_free(char **str);
@@ -82,6 +82,7 @@ void	ft_algorithm(t_stack **stack_a, t_stack **stack_b);
 // target
 void	get_target_pos(t_stack **stack_a, t_stack **stack_b);
 void	get_pos(t_stack **stack);
+void	ft_free_num(int ac, char **numbers);
 
 // cost
 void	cost(t_stack **stack_a, t_stack **stack_b);
