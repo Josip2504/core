@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:17:51 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/13 12:23:44 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:21:08 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_push(t_stack **src, t_stack **dest)
 {
-	t_stack	*temp;
+	t_stack	*top;
 
 	if (*src != NULL)
 	{
-		temp = (*src)->next;
-		(*src)->next = *dest;
-		*dest = *src;
-		*src = temp;
+		top = *src;
+		*src = top->next;
+		top->next = *dest;
+		*dest = top;
 	}
 }
 

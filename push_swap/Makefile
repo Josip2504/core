@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 11:39:03 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/27 12:45:05 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/05/27 15:36:02 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@cc $(CFLAGS) -Ilibft -Iprintf -c $< -o $@
 
 $(NAME): $(OBJ)
+	@echo "make"
 	@make -C libft
 	@make -C printf
 	@cc $(CFLAGS) $^ -Llibft -lft -Lprintf -lftprintf -o $@

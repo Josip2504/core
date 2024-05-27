@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:09:07 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/13 13:20:33 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:31:47 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 void	ft_rotate(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*bot;
+	t_stack	*curr;
 
-	temp = *stack;
-	*stack = (*stack)->next;
-	bot = get_bottom(*stack);
-	temp->next = NULL;
-	bot->next = temp;
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		curr = *stack;
+		while (curr->next != NULL)
+			curr = curr->next;
+		curr->next = *stack;
+		*stack = (*stack)->next;
+		curr->next->next = NULL;
+	}
 }
 
 void	ft_ra(t_stack **stack_a)

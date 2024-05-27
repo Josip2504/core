@@ -6,16 +6,11 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:50:03 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/27 14:34:09 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:42:30 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    leaks(void)
-{
-    system("leaks push_swap");
-}
 
 int	main(int ac, char **av)
 {
@@ -33,6 +28,5 @@ int	main(int ac, char **av)
 	push_swap(&stack_a, &stack_b, size_stack);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	atexit(leaks);
 	return (0);
 }
