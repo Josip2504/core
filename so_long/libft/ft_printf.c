@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 10:49:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 21:13:13 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 12:25:39 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/30 21:05:56 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_printf(const char *format, ...)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'));
+	va_list	ap;
+	int		count;
+
+	count = 0;
+	va_start(ap, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			count += print_format(*(++format), ap);
+			if (count < 0)
+				return (-1);
+		}
+		else
+		{
+			count += print_char(*format);
+			if (count < 0)
+				return (-1);
+		}
+		++format;
+	}
+	va_end(ap);
+	return (count);
 }

@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 10:49:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 21:13:13 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/03/18 15:12:22 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/30 21:05:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	print_str(char *str)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'));
+	int	count;
+
+	count = 0;
+	if (str == NULL)
+	{
+		return (write (1, "(null)", 6));
+	}
+	if (!str)
+		return (-1);
+	while (*str)
+	{
+		count += print_char((int)*str);
+		if (count < 0)
+			return (-1);
+		++str;
+	}
+	return (count);
 }

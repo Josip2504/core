@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 10:49:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 21:13:13 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/30 19:40:17 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/05/30 19:43:42 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long.h"
 
-int	ft_isalnum(int c)
+void	init_map(t_map *map)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'));
+	map->rows = 0;
+	map->cols = 0;
+	map->exit_col = 0;
+	map->exit_row = 0;
+	map->num_collectibles = 0;
+	map->player_col = 0;
+	map->player_row = 0;
 }
+
