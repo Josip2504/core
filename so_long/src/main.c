@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 22:14:48 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:10:48 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,23 @@ int	main(int ac, char **av)
 		return (ft_error("Error\nInvalid arguments"));
 	if (!ft_input(av[1]))
 		return (ft_error("Error\nArgument must be .ber file"));
-	ft_bzero(&data, sizeof(t_data));
-	data->map = malloc(sizeof(t_map));
-	if (data->map == NULL)
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL)
 		ft_error("Error\nMemory allocation");
+	ft_bzero(data, sizeof(t_data));
+	data->map = (t_map *)malloc(sizeof(t_map));
+	if (data->map == NULL)
+	{
+		free(data);
+		ft_error("Error\nMemory allocation");
+	}
 	init_map(data->map);
-	read_map(&data, av[1]);
+	free(data->map);
+	free(data);
 	return (0);
 }
+
+	// read_map(&data, av[1]);
 
 // mlx_ptr = mlx_init();
 // win_ptr = mlx_new_window(mlx_ptr, 800, 600, "Game");

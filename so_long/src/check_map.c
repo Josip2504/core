@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 21:45:10 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/30 22:16:03 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:49:20 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	check_map(t_data *data)
 {
-	
+	return (0);	
 }
