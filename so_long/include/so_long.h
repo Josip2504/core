@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/31 16:41:22 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 16:25:13 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define KEY_ESC 53
 # define MAX_LINE_LEN 256
 # define CHARS "PEC10"
+# define MAX_LINE_LENGTH 4096
 
 typedef struct s_map
 {
@@ -46,7 +47,7 @@ typedef struct s_data
 }	t_data;
 
 // ft_get_nl
-char	*ft_get_nl(int fd);
+int		get_nl(int fd);
 
 // ft_errors
 void	ft_error(char *str);

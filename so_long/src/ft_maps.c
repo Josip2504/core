@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:16:37 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/05/31 16:09:12 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:25:05 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,15 @@
 
 static void	get_row_num(t_data *data, char *file)
 {
-	int		fd;
-	char	*line;
+	int	fd;
+	int	line;
 
-	line = NULL;
+	line = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error("Error\nOpenning file");
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		data->map->rows += 1;
-		free(line);
-		line = NULL;
-	}
+	line = get_nl(fd);
+	data->map->rows = line;
 	close(fd);
 }
 
@@ -65,12 +58,12 @@ int	read_map(t_data *data, char *file)
 	int	check;
 
 	get_row_num(data, file);
-	ft_printf("rows = %d\n", data->map->rows);
 	if (data->map->rows == 0)
 		ft_error("Error\nNo map");
-	parse_map(file, data);
-	check = check_map(data);
-	if (check > 0)
-		ft_error("Error\nInvalid map");
+	printf("%d\n", data->map->rows);
+	// parse_map(file, data);
+	// check = check_map(data);
+	// if (check > 0)
+	// 	ft_error("Error\nInvalid map");
 	return (0);
 }
