@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 16:25:13 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 19:37:20 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define MAX_MAP_SIZE 100
 # define KEY_ESC 53
-# define MAX_LINE_LEN 256
 # define CHARS "PEC10"
-# define MAX_LINE_LENGTH 4096
+# define BUFF_SIZE 4096
 
 typedef struct s_map
 {
@@ -69,6 +67,7 @@ int		close_win(void);
 
 // game
 void	init_map(t_map *map);
+void	get_row_num(t_data *data, char *file);
 
 // ft_maps
 int		read_map(t_data *data, char *file);

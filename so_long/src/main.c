@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/01 17:25:45 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:11:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		ft_error("Error\nMemory allocation");
 	}
 	init_map(data->map);
-	read_map(data, av[1]); 				//seg fault
+	read_map(data, av[1]);
 	free(data->map);
 	free(data);
 	return (0);
