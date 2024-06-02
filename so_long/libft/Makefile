@@ -6,7 +6,7 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 14:39:19 by jsamardz          #+#    #+#              #
-#    Updated: 2024/05/30 21:38:54 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/06/02 15:37:23 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,15 @@ NAME = libft.a
 all: ${NAME}
 
 $(NAME): $(OBJ)
-	@echo "make"
 	@ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "clean"
 	@rm -f ${OBJ}
 
 fclean:
-	@echo "fclean"
 	@rm -f ${NAME}
 	@rm -f ${OBJ}
 

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:47:22 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/02 15:46:37 by jsamardz         ###   ########.fr       */
+/*   Created: 2024/05/30 18:41:24 by jsamardz          #+#    #+#             */
+/*   Updated: 2024/06/02 13:33:40 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int ac, char **av)
+int	ft_input(const char *name)
 {
-	t_data	data;
-	t_map	map;
+	const char	*end;
+	size_t		len_name;
+	size_t		len_end;
+	size_t		res;
 
-	if (ac != 2)
-		ft_error("Error\nInvalid arguments");
-	map_size(&data, av);
-
-	return (0);
+	end = ".ber";
+	len_name = ft_strlen(name);
+	len_end = ft_strlen(end);
+	if (len_name < len_end)
+		return (0);
+	res = ft_strncmp(name + len_name - len_end, end, 4) == 0;
+	return (res);
 }
