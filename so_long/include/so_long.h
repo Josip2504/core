@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/02 15:33:00 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 20:04:53 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		collectible;
+	void	*player;
 }	t_map;
 
 typedef struct s_data
@@ -37,6 +38,10 @@ typedef struct s_data
 	void	*win;
 	int		x;
 	int		y;
+	int		player_x;
+	int		player_y;
+	int		moves;
+	int		collected;
 	t_map	*map;
 }	t_data;
 
@@ -48,5 +53,9 @@ void	map_size(t_data *data, char **av);
 
 // error
 void	ft_error(char *str);
+
+// parse_map
+void	parse_map(t_data *data, char **av);
+void	rec_check(t_data *data);
 
 #endif

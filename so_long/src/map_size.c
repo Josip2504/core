@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:39:18 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/02 14:07:19 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:15:29 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	lines(int fd, int x, int img)
 			|| (ft_strlen(line) == 1 && *line != '\n'))
 		{
 			free(line);
-			ft_error("Error\n");
+			ft_error("Error\nMap is not rectengular");
 		}
 		else
 		{
@@ -64,11 +64,11 @@ void	map_size(t_data *data, char **av)
 {
 	int	fd;
 
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		ft_error("Error\nOpening map");
 	if (!ft_input(av[1]))
 		ft_error("Error\nArgument must be .ber file");
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+		ft_error("Error\nOpening map, check does map exits");
 	data->x = (lenght(fd) * IMAGE_X);
 	data->y = (lines(fd, data->x, IMAGE_Y) * IMAGE_X);
 }
