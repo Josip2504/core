@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   util_fncs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stopp <stopp@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:03:08 by stopp             #+#    #+#             */
-/*   Updated: 2024/03/23 19:18:02 by stopp            ###   ########.fr       */
+/*   Updated: 2024/06/03 14:25:31 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_array(char **array)
+void	wfree_array(char **array)
 {
 	int	i;
 
