@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:20:40 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/04 15:53:48 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 00:56:10 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	background(t_data *data)
 	int	y;
 
 	y = 0;
+	x = 0;
 	while (y < data->y)
 	{
 		x = 0;
@@ -25,9 +26,9 @@ void	background(t_data *data)
 		{
 			mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 				x, y);
-			x += IMAGE_X;
+			x += IMAGE_Y;
 		}
-		y += IMAGE_Y;
+		y += IMAGE_X;
 	}
 }
 

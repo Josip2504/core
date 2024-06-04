@@ -6,11 +6,17 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:59:31 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/04 16:15:14 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:00:22 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	game_over(void)
+{
+	ft_printf("You won!");
+	exit(EXIT_SUCCESS);
+}
 
 void	load_map(t_data *data)
 {
@@ -21,11 +27,11 @@ void	load_map(t_data *data)
 		if (data->map->map[data->map->y][data->map->x] == 'P')
 			load_player(data);
 		else if (data->map->map[data->map->y][data->map->x] == 'E')
-			load_obj(data, "../img/exit.png");
+			load_obj(data, "./img/exit.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == '1')
-			load_obj(data, "../img/wall.png");
+			load_obj(data, "./img/wall.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == 'C')
-			load_obj(data, "../img/col.png");
+			load_obj(data, "./img/col.xpm");
 		if (data->map->x < (data->x / IMAGE_Y))
 			data->map->x++;
 		else
@@ -38,18 +44,18 @@ void	load_map(t_data *data)
 
 int key_hook(int keycode, t_data *data)
 {
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		esc_game(data);
-	else if (keycode == 53)
+	else if (keycode == W)
 		moves(data, 'y', UP);
-	else if (keycode == 53)
+	else if (keycode == A)
 		moves(data, 'x', LEFT);
-	else if (keycode == 53)
+	else if (keycode == S)
 		moves(data, 'y', DOWN);
-	else if (keycode == 53)
+	else if (keycode == D)
 		moves(data, 'x', RIGHT);
 	if (data->map->map[data->player_y][data->player_x] == 'E')
-		game_over(data);
+		game_over();
 	return (0);
 }
 
@@ -64,6 +70,4 @@ void	render_game(t_data *data)
 {
 	background(data);
 	load_map(data);
-	mlx_hook(data->win, 17, 1L << 2, esc_game, data);
-	mlx_key_hook(data->win, key_hook, data);
 }

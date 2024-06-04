@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/04 16:14:17 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:01:06 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 # define IMAGE_X 32
 # define IMAGE_Y 32
@@ -62,8 +66,15 @@ typedef struct s_data
 	t_img	*img;
 }	t_data;
 
+// init_map
+void	init_map(t_data *data, t_map *map);
+
+// moves
+void	moves(t_data *data, char p, int dir);
+
 // render_game
 int		esc_game(t_data *data);
+int 	key_hook(int keycode, t_data *data);
 
 // load_img
 void	background(t_data *data);
