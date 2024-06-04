@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/03 21:15:26 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:14:17 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,22 @@
 # include <string.h>
 # include <fcntl.h>
 
+# define KEY_ESC 53
+# define UP -1
+# define DOWN 1
+# define LEFT -1
+# define RIGHT 1
+
 # define IMAGE_X 32
 # define IMAGE_Y 32
 
-typedef struct s_pos
+// x je visina, y je duzina mape
+
+typedef struct s_img
 {
-	int	x;
-	int	y;
-}	t_pos;
+	void	*background;
+	void	*player;
+}	t_img;
 
 typedef struct s_map
 {
@@ -35,7 +43,7 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		collectible;
-	void	*player;
+	void	*obj;
 }	t_map;
 
 typedef struct s_data
@@ -51,11 +59,25 @@ typedef struct s_data
 	int		moves;
 	int		collected;
 	t_map	*map;
+	t_img	*img;
 }	t_data;
+
+// render_game
+int		esc_game(t_data *data);
+
+// load_img
+void	background(t_data *data);
+void	load_obj(t_data *data, char *path);
+void	load_player(t_data *data);
+
+// render_game
+void	render_game(t_data *data);
 
 // utils
 void	free_array(char **s);
 int		counter(char *str, char c);
+int		close_win();
+int		keypress(int keycode);
 
 // map_path
 void	map_path(t_data *data);
