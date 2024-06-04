@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 01:01:06 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:11:37 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define S 1
 # define D 2
 
-# define IMAGE_X 32
-# define IMAGE_Y 32
+# define IMAGE_X 64
+# define IMAGE_Y 64
 
 // x je visina, y je duzina mape
 
