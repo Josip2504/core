@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:07:24 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 01:02:24 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:56:05 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ static void	player_move(t_data *data, char p, int dir)
 {
 	if (p == 'y' && dir == UP)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_up,
 			(data->player_x * IMAGE_Y), (data->player_y * IMAGE_X));
 	}
 	if (p == 'y' && dir == DOWN)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_down,
 			(data->player_x * IMAGE_Y), (data->player_y * IMAGE_X));
 	}
 	if (p == 'x' && dir == RIGHT)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_right,
 			(data->player_x * IMAGE_Y), (data->player_y * IMAGE_X));
 	}
 	if (p == 'x' && dir == LEFT)
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_left,
 			(data->player_x * IMAGE_Y), (data->player_y * IMAGE_X));
 	}
 }

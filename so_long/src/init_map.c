@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:27:40 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 00:47:15 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:53:46 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,17 @@ static void	init_map_player(t_data *data)
 	int		img_w;
 	int		img_h;
 
-	path = "./img/player.xpm";
-	data->img->player = mlx_xpm_file_to_image(data->mlx, path,
+	path = "./img/player_up.xpm";
+	data->img->player_up = mlx_xpm_file_to_image(data->mlx, path,
+		&img_w, &img_h);
+	path = "./img/player_down.xpm";
+	data->img->player_down = mlx_xpm_file_to_image(data->mlx, path,
+		&img_w, &img_h);
+	path = "./img/player_left.xpm";
+	data->img->player_left = mlx_xpm_file_to_image(data->mlx, path,
+		&img_w, &img_h);
+	path = "./img/player_right.xpm";
+	data->img->player_right = mlx_xpm_file_to_image(data->mlx, path,
 		&img_w, &img_h);
 }
 

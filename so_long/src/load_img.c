@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:20:40 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 00:56:10 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:54:47 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	load_player(t_data *data)
 {
 	data->player_x = data->map->x;
 	data->player_y = data->map->y;
-	mlx_put_image_to_window(data->mlx, data->win, data->img->player,
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player_right,
 		(data->map->x * IMAGE_Y), (data->map->y * IMAGE_X));
 }

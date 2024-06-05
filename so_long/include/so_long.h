@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:47:16 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/05 01:11:37 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/05 01:51:24 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@
 typedef struct s_img
 {
 	void	*background;
-	void	*player;
+	void	*player_up;
+	void	*player_down;
+	void	*player_left;
+	void	*player_right;
 }	t_img;
 
 typedef struct s_map
