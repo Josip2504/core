@@ -6,12 +6,12 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:47:19 by jsamardz          #+#    #+#              #
-#    Updated: 2024/06/05 21:44:22 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/06/05 22:04:47 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRC = $(addprefix src/, main.c map_size.c input.c parse_map.c map_path.c utils.c render_game.c load_img.c moves.c init_map.c)
 OBJ = $(SRC:.c=.o)
