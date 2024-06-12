@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:23:19 by jsamardz          #+#    #+#             */
-/*   Updated: 2024/06/11 15:43:09 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:42:15 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	signal_handler(int sig)
 	}
 }
 
-void	signal_setup()
+void	signal_setup(void)
 {
-	struct	sigaction sa;
-	
+	struct sigaction	sa;
+
 	memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = signal_handler;
 	sigaction(SIGINT, &sa, NULL);
