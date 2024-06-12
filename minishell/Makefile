@@ -6,14 +6,14 @@
 #    By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/11 13:38:52 by jsamardz          #+#    #+#              #
-#    Updated: 2024/06/11 15:28:01 by jsamardz         ###   ########.fr        #
+#    Updated: 2024/06/12 14:19:09 by jsamardz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = main.c signals.c
+SRC = main.c signals.c external.c
 OBJ = $(SRC:.c=.o) 
 
 all: $(NAME)

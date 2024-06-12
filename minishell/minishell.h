@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:01:22 by dslaveev          #+#    #+#             */
-/*   Updated: 2024/06/11 15:44:16 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:19:20 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@
 
 //signals
 void	signal_setup();
+
+// external
+void	exicute_external(char *input);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsamardz <jsamardz@student.42heilnronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:59:54 by dslaveev          #+#    #+#             */
-/*   Updated: 2024/06/11 15:45:07 by jsamardz         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:23:56 by jsamardz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	builtin_check(char *input)
 	else if (!strncmp(input, "type ", 5))
 		handle_type(input);
 	else
-		printf("Command not found: %s\n", input);
+		exicute_external(input);
 }
 
 void	handle_input(char *input)
